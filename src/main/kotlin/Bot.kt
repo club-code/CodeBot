@@ -114,9 +114,9 @@ class Bot : ListenerAdapter() {
             val script = ctx.compileString(content, "my_script_id", 1, null)
             val o = script.exec(ctx, scope)
             if (console.isEmpty())
-                "Return: `" + Context.toString(o) + "`"
+                ("Return: `" + Context.toString(o) + "`").take(MAX_LENGTH)
             else
-                "Return: `" + Context.toString(o) + "`\nLogs:\n```\n" + console.toString() + "```"
+                ("Return: `" + Context.toString(o) + "`\nLogs:\n```\n" + console.toString() + "```").take(MAX_LENGTH)
         } catch (e: Exception) {
             e.message ?: ""
         } finally {
