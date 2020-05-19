@@ -126,7 +126,7 @@ class Bot : ListenerAdapter() {
 }
 
 class Console {
-    val buffer = java.lang.StringBuilder()
+    private val buffer = java.lang.StringBuilder()
 
     fun log(s: String) {
         buffer.append(s + '\n')
