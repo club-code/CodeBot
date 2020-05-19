@@ -39,14 +39,14 @@ internal class TimedFactory : ContextFactory() {
             // it is time to stop the script.
             // Throw Error instance to ensure that script will never
             // get control back through catch or finally.
-            throw Error()
+            throw Exception("Execution took too long !")
         }
     }
 
     override fun doTopCall(
-        callable: Callable?,
-        cx: Context, scope: Scriptable?,
-        thisObj: Scriptable?, args: Array<Any?>?
+            callable: Callable?,
+            cx: Context, scope: Scriptable?,
+            thisObj: Scriptable?, args: Array<Any?>?
     ): Any {
         val mcx = cx as MyContext
         mcx.startTime = System.currentTimeMillis()
